@@ -1,0 +1,418 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+
+
+/* Reset CSS Start */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+
+body {
+  font-size: 16px;
+  overflow-x: hidden !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+a {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+/* Reset CSS End */
+
+
+/* Navbar CSS Start */
+.search-btn {
+  border: none;
+  background: none;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.hamburger {
+  width: 30px;
+  height: 2px;
+  background: #000;
+  position: relative;
+  margin: 8px 0;
+}
+
+/* Navbar CSS End */
+
+
+/* Steps Area CSS Start */
+.steps-area {
+  background: #f5f5f5;
+}
+
+.steps-area .title {
+  font-size: 30px;
+}
+
+.steps-area .steps {
+  margin-left: 55px;
+}
+
+.steps-area .step-box {
+  position: relative;
+  height: 100%;
+}
+
+.steps-area .step {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #979797;
+}
+
+.steps-area .step h4 {
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #979797;
+}
+
+.steps-area .active {
+  background: #d40605;
+  border: 1px solid #d40605;
+}
+
+.steps-area .active h4 {
+  color: #fff;
+}
+
+.bar {
+  width: 174px;
+  height: 1px;
+  background: #979797;
+}
+
+.steps-area .step-name {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+}
+/* Steps Area CSS End */
+/* Form-2 */
+@media (min-width: 992px){
+h2.title.form2 {
+   text-align: center;
+  margin: 0px;
+  display: block;
+  font-size: 50px;}
+ 
+ 
+p.title.form2.p {
+  font-size: 18px;
+  font-weight: lighter;
+  margin-top: 10px;
+}
+h1.form-heading.form2 {
+  font-size: 40px;
+}
+section.steps-area.py-5.news{
+  padding-bottom: 1rem!important;
+}
+h1.form-heading.form2.rent {
+  padding-top: 2rem;
+}
+
+}
+@media (max-width: 992px){
+ 
+  p.title.form2.p {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .mb-3.mb-md-0.news {
+    margin-bottom: 0rem!important;
+  }
+  h1.form-heading.form2{
+    padding-top: 2rem;
+  }
+ 
+  .primary-btn.bg-dark.text-white.selects{
+    margin: 0;
+  }
+ 
+  h2.title.form2{
+    font-weight: 700;
+    font-size: 20px;
+  }
+  section.steps-area.py-5.news {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+  }
+}
+
+.location-icons {
+  display: flex;
+  align-items: center;
+  color:#595959;
+  margin-top: 5px;
+}
+
+.location-icons img {
+  width: 20px; /* İkonun genişliğini ayarlayın */
+  height: 20px; /* İkonun yüksekliğini ayarlayın */
+  margin-right: 5px; /* İkon ile metin arasına boşluk bırakmak için */
+}
+a.nav-link {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+}
+/* Cars Area CSS Start */
+.cars-area .cars-top-area p {
+  font-size: 20px;
+}
+
+.primary-btn {
+  width: 124px;
+  height: 45px;
+  border-radius: 42px;
+  font-size: 13px;
+  border: 1px solid #adadad;
+  color: #5a5a5a;
+  background: none;
+  margin: 10px
+}
+
+.primary-btn.active {
+  background: #2f2f2f;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: #2f2f2f;
+  color: #fff;
+}
+
+.car-wrapper .car-img {
+  height: 300px;
+  padding: 0 10px;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: 0.1s ease-in-out;
+}
+
+.car-wrapper .car-img .hover-img {
+  position: absolute;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+
+.car-wrapper:hover .car-img{
+  border-bottom: 4px solid #d40605;
+  background: #434343;
+}
+
+.car-wrapper:hover .main-img {
+  opacity: 0;
+}
+
+.car-wrapper:hover .hover-img {
+  opacity: 1;
+}
+
+.car-wrapper .car-name,
+.car-wrapper .category {
+  color: #141414; 
+}
+
+.car-wrapper .category {
+  color: #707070;
+}
+/* Cars Area CSS End */
+
+
+/* Car Details Area CSS Start */
+.car-details {
+  position: absolute;
+  left: 80px;
+  bottom: 50px;
+  color: #fff;
+}
+
+.car-details h3 {
+  font-weight: 300;
+}
+
+.car-details p {
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.search {
+  width: 500px;
+  height: 45px;
+}
+
+.location-icon {
+  position: absolute;
+  left: 0;
+  top:0;
+  z-index: 2;
+}
+
+.search-bar {
+  width: 100%; 
+  padding: 5px 30px; 
+  border: none;
+  border-bottom: 1px solid #7c7c7c;
+  font-size: 11px;
+}
+
+.search .search-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* Car Details Area CSS End */
+
+
+/* Form Area CSS Start */
+.form-heading {
+  font-size: 50px;
+}
+
+.form-sub-heading {
+  font-size: 18px;
+}
+
+.form-title {
+  font-size: 40px;
+}
+
+input, select {
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #505050;
+  font-size: 16px;
+  padding: 8px 0;
+  outline: none;
+  background: none;
+}
+
+input::placeholder, select {
+  color: #595959;
+}
+
+input[type="checkbox"] {
+  width: auto;
+}
+
+.address-box {
+  width: 404px;
+  background: #ececec;
+  margin-top: 60px;
+}
+
+.address-box .address {
+  font-size: 14px;
+}
+
+.address-box .address-link {
+  font-weight: 600;
+  color: #d40605;
+  text-decoration: underline;
+}
+/* Form Area CSS End */
+
+
+/* Popup CSS Start */
+.popup {
+  width: 800px;
+  height: 480px;
+  background: #fff;
+  padding: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+#popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.3);
+  content: '';
+  display: none;
+}
+
+.popup .popup-wrapper .popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.popup .popup-bg {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 850px;
+  z-index: -1;
+}
+
+.popup .close-btn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  background: none;
+  border: none;
+}
+
+.popup .popup-wrapper .popup-content .popup-title {
+  font-size: 50px;
+}
+/* Popup CSS End */

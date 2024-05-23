@@ -1,0 +1,124 @@
+<div class="modal" style="width: 100%;" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Operasyon Seç</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </div> 
+    <main>
+      <!-- Steps Area Start -->
+      <section class="steps-area py-5 news">
+        <div class="container">
+          <div class="d-flex flex-column  justify-content-between align-items-md-center">
+            <div class="mb-3 mb-md-0 news">
+              <h2 class="title form2 item-center">Ziyaretçi Formu</h2>
+              <p class="title form2 p">Formu doldurun, dijital bilete sahip olun!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-area py-3">
+        <div class="container">
+          <h1 class="form-heading form2">Bilgilerim</h1>
+          <form class="py-4" [formGroup]="reservationAddForm" >
+            <div class="row g-5 pb-4">
+        
+              <div class="col-md-4 field">
+                <input type="text" name="name" formControlName="name"  placeholder="Adınız & Soyadınız*" id="name" required>
+                <label for="name" data-title="Firmanızın Adı*"></label>
+              </div>
+          
+              <div class="col-md-4 field">
+                <input type="text" name="phoneNumber" formControlName="phoneNumber"  placeholder="Telefon Numaranız*"  id="phoneNumber" required>
+                <label for="phoneNumber" data-title="Telefon Numaranız*"></label>
+
+              </div>
+              <div class="col-md-4 field">
+                <input type="email" name="email" formControlName="mail"  placeholder="E-posta adresiniz*" required>
+                <label for="email" data-title="E-posta adresiniz*"></label>
+
+              </div>
+              <div class="col-md-4 ">
+                <select formControlName="participationType" [(ngModel)]="selectParticipationType"   name="appointment-date" id="">
+                  <option value="Katılım Türü*">Katılım Türü*</option>
+                  <option value="Katılımcı">Katılımcı</option>
+                  <option value="Ziyaretçi">Ziyaretçi</option>
+                  <option value="Basın">Basın</option>
+                  <option value="Alım Heyeti">Alım Heyeti</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 ">
+                <select formControlName="sector" [(ngModel)]="selectSector" id="">
+                  <option value="Sektör*">Sektör*</option>
+                  <option value="Basın">Basın</option>
+                  <option value="VİP">VİP</option>
+                  <option value="Bilişim">Bilişim</option>
+                  <option value="Bankacılık">Bankacılık</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 field">
+                <input type="text" formControlName="company" name="company" placeholder="Firma*" required>
+                <label for="company" data-title="Firma*"></label>
+
+              </div>
+
+              <div class="col-md-4 field">
+                <input formControlName="task" type="text" name="task" placeholder="Görevi*" required>
+                <label for="task" data-title="Görevi*"></label>
+              </div>
+              <div class="col-md-4 field">
+                <select formControlName="country"  [(ngModel)]="selectCountry"  name="countries" id="">
+                  <option value="Ülke*">Ülke*</option>
+                  <option value="Türkiye">Türkiye</option>
+                  <option value="Mısır">Mısır</option>
+                  <option value="Azerbeycan">Azerbeycan</option>
+                  <option value="Almanya">Almanya</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 field">
+                <select formControlName="city" name="cities"  [(ngModel)]="selectCity"  id="">
+                  <option value="Şehir*">Şehir*</option>
+                  <option value="Ankara ">Ankara </option>
+                  <option value="İstanbul ">İstanbul </option>
+                  <option value="Antalya ">Antalya </option>
+                  <option value="Muğla ">Muğla </option>
+                </select>
+              </div>
+
+            </div>
+            <p class="mt-5">Kullanım Şartları ve Gizlilik/Kişisel Verilerin Korunması Politikası ve Aydınlatma Metni'ne buradan ulaşabilirsiniz.</p>
+            <p class="mt-5">
+              <strong>Kişisel Verilerin İşlenmesine Yönelik Açık Rıza Beyanı</strong>
+            </p>
+            <div class="d-flex align-items-baseline">
+              <input type="checkbox" name="statement" id="statement" class="me-2 me-md-3">
+              <label for="statement">Paylaşmış olduğum bilgilerin Toyota güvencesinde, incelediğim ve kabul ettigim Toyota‘nin Kişisel Verilerin Korunması ve işlenmesine ilişkin Aydınlatma Metnini okudum. Kisisel verilerimin aydınlatma metninde belirtilen amaclar icin yasalara, kullanım amacına uygun şekilde saklanarak işlenmesini ve paylaşılmasını kabul edip onaylıyorum. Toyota Aydınlatma Metni’ne uygun olarak Ürün ve hizmetlerinizin sunulması için kişisel verilerimin Toyota bayileri ile is ortaklarınıza ve iştiraklerine aktarılmasını açık rızam ile kabul edip onaylıyorum.</label>
+            </div>
+            <p class="mt-5">
+              <strong>Elektronik Ticari İleti Gönderimine İlişkin Onay</strong>
+            </p>
+            <div class="d-flex align-items-baseline">
+              <input type="checkbox" name="e-com" id="eCom" class="me-2 me-md-3">
+              <label for="eCom">İzinli iletişim formunu okuduğumu ve onayladığımı kabul ederim. Toyota Aydınlatma Metnine uygun olarak ürün ve hizmetlerinizin sunulması için kişisel verilerimin Toyota Motor Europe NV/SA, Toyota Motor Corporation ile iş ortaklarına ve iştiraklerine aktarılabileceğini onaylıyorum. (Sözleşmeyi oku)</label>
+            </div>
+            <button class="primary-btn mt-5 bg-dark text-white" id="form-submit-btn"  (click)="add()">Gönder</button>
+          </form>
+        </div>
+      </section>
+      <!-- Form Area End -->
+      <!--
+        validation mask
+      -->
+     
+      <!-- Popup Start -->
+   
+      <!-- Popup End -->
+    </main>
+    <!-- Bootstrap 5 JS CDN -->

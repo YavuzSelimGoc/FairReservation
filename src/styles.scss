@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+
+.label-before {
+	line-height: 20px;
+	top: -10px;
+	background: #fff;
+	padding: 0 6px;
+}
+
+
+.field {
+	position: relative;
+	margin-bottom: 15px;
+	label::before {
+		content: attr(title);
+		position: absolute;
+		top: 0;
+		left: 15px;
+		line-height: 40px;
+		font-size: 14px;
+		color: #777;
+		transition: 300ms all;
+	}
+	input {
+		
+			
+			border: none;
+			border-bottom: 1px solid #505050;
+			font-size: 16px;
+			padding: 8px 0;
+			outline: none;
+			background: none;
+		&:focus {
+			outline: 0;
+			border-color: #505050;
+		}
+		&:valid + label::before {
+			@extend .label-before;
+			content: attr(data-title);
+		}
+		&:focus + label::before {
+			@extend .label-before;
+			color: #505050;
+			margin-left: 0px;
+		}
+		&:focus + label::after {
+			@extend .label-before;
+			color: #505050;
+			margin-left: 0px;
+		}
+	}
+}
+
+
+

@@ -1,0 +1,93 @@
+@media (max-width: 575.98px) {
+    .steps-area .title {
+        font-size: 18px;
+    }
+    .car-wrapper .car-img {
+        height: 150px;
+    }
+    .col-md-3.vehicles {
+        width: 50%;
+        
+    }
+    h2.form-title.my-5.forms {
+        margin-top: 1.5rem!important;
+        margin-bottom: 1rem!important;
+    }
+    section.form-area.py-5.text {
+        padding-top: 1.5rem!important;
+    }
+    .form-sub-heading {
+        font-size: 13px;
+    }
+
+    .steps-area .steps {
+        margin-left: 0;
+    }
+
+    .bar {
+        width: 100px;
+    }
+
+    .steps-area .step-name {
+        text-align: center;
+        width: 110px;
+        bottom: -60px;
+        font-size: 13px;
+    }
+
+    .first-step {
+        left: 150% !important;
+        text-align: left !important;
+    }
+
+    .cars-top-area .primary-btn {
+        margin-top: 10px;
+    }
+
+    .car-details {
+        left: 30px;
+        bottom: 0px;
+    }
+
+    .search {
+        width: 100% !important;
+    }
+
+    .address-box {
+        width: 100%;
+    }
+
+    .form-heading {
+        font-size: 28px;
+    }
+
+    .form-title {
+        font-size: 28px;
+    }
+
+    input, select {
+        width: 100%;
+    }
+
+    .popup {
+        padding: 30px;
+        width: 90%;
+        height: 470px;
+    }
+
+    .popup .popup-wrapper .popup-content .popup-title {
+        text-align: center;
+        font-size: 32px;
+    }
+
+
+    .popup .close-btn {
+        top: -15px;
+        right: -15px;
+    }
+
+    .popup .close-btn {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
