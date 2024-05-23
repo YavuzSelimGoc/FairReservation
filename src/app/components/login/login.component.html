@@ -1,0 +1,39 @@
+<div class="hold-transition login-page">
+    <div class="login-box">
+
+        <div class="card card-outline card-dark">
+            <div class="card-header text-center">
+                <!-- <a class="h1"><b>Toyota </b>Panel</a> -->
+                <!-- <img src="../../../assets//client//img/popup-logo.svg" alt="AdminLTE Logo"  class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Oturumunuzu başlatmak için giriş yapın. </p>
+                <form [formGroup]="loginForm" method="post">
+                    <div class="input-group mb-3">
+                        <input type="email" formControlName="userName" placeholder="Username" class="form-control" >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="">
+                            <button type="submit" (click)="login()" class="btn btn-dark btn-block">Giriş Yap</button>
+                        </div>
+                    </div>
+                </form>
+        
+            </div>
+
+        </div>
+
+    </div>

@@ -32,8 +32,9 @@
             "styles": [
               "src/styles.scss",
               "src/assets/css/style.css",
-              "src/assets/css/responsive.css"
-             
+              "src/assets/css/responsive.css",
+              "node_modules/ngx-toastr/toastr.css"
+
             ],
             "scripts": [
               "src/assets/plugins/jquery/jquery.min.js",

@@ -1,7 +1,12 @@
+import { TokenInterceptorService } from './services/token-interceptor.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +17,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { UploadsComponent } from './components/uploads/uploads.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { AddFairComponent } from './components/add-fair/add-fair.component';
+import { PdfSettingsComponent } from './components/pdf-settings/pdf-settings.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +30,24 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeaderComponent,
     ReservationComponent,
     UploadsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    AddFairComponent,
+    PdfSettingsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    QRCodeModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-top-right"
+    })
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

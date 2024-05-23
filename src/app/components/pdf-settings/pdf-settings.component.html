@@ -1,0 +1,43 @@
+<div style="text-align: center;">
+    <div class="form-group">
+      <label for="alignmentSelect">Düzen:</label>
+      <select id="alignmentSelect" class="form-control" [(ngModel)]="selectedAlignment" >
+        <option value="image-left">Resim Sol, QR Sağ</option>
+        <option value="image-right">Resim Sağ, QR Sol</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="imageSize">Resim Boyutu:</label>
+      <input type="number" id="imageSize" class="form-control" [(ngModel)]="imageSize" placeholder="Boyut (px)" >
+    </div>
+  
+    <div class="form-group">
+      <label for="qrSize">QR Kod Boyutu:</label>
+      <input type="number" id="qrSize" class="form-control" [(ngModel)]="qrSize" placeholder="Boyut (px)" >
+    </div>
+  
+    <div class="form-group">
+      <label for="positionSelect">QR Kod ve Resim Konumu:</label>
+      <select id="positionSelect" class="form-control" [(ngModel)]="selectedPosition" >
+        <option value="top-left">Sol Üst</option>
+        <option value="top-center">Orta Üst</option>
+        <option value="top-right">Sağ Üst</option>
+        <option value="middle-left">Sol Orta</option>
+        <option value="center">Tam Orta</option>
+        <option value="middle-right">Sağ Orta</option>
+        <option value="bottom-left">Sol Alt</option>
+        <option value="bottom-center">Orta Alt</option>
+        <option value="bottom-right">Sağ Alt</option>
+      </select>
+    </div>
+  
+    <!-- Önizleme Alanı -->
+ 
+  
+    <button (click)="createPDF()">PDF Oluştur</button>
+  
+  </div>
+<!-- Önizleme Alanı -->
+<!-- Önizleme Alanı -->
+<!-- Önizleme Alanı -->

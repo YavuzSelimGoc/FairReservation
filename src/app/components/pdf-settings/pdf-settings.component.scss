@@ -1,0 +1,24 @@
+.pdf-preview {
+    border: 1px solid #ccc; /* Dikdörtgen çerçeve */
+    width: 400px; /* Varsayılan genişlik */
+    height: 300px; /* Varsayılan yükseklik */
+    position: relative; /* Konumu ayarla */
+    margin: 0 auto; /* Ortalamak için */
+  }
+  
+  .pdf-preview img {
+    position: absolute; /* Görsellerin konumunu ayarlamak için */
+  }
+  
+  .pdf-preview img:nth-child(1) {
+    top: 50%; /* İlk resmi ortalamak için */
+    left: 50%; /* İlk resmi ortalamak için */
+    transform: translate(-100%, -50%); /* İlk resmi tam ortalamak için */
+  }
+  
+  .pdf-preview img:nth-child(2) {
+    top: 50%; /* İkinci resmi ortalamak için */
+    left: 50%; /* İkinci resmi ortalamak için */
+    transform: translate(50%, -50%); /* İkinci resmi tam ortalamak için */
+  }
+  

@@ -21,7 +21,7 @@
         <!-- Brand Logo -->
         <a class="brand-link">
       
-          <span class="brand-text font-weight-light">Rezervasyon Paneli </span>
+          <span class="brand-text font-weight-light ml-4 ">Rezervasyon Paneli </span>
         </a>
       
         <!-- Sidebar -->
@@ -29,8 +29,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-              <img  style="width: 40px; height: 40px;" class="img-circle elevation-2"
-                alt="User Image">
+              <!-- <img  style="width: 40px; height: 40px;" class="img-circle elevation-2" alt="User Image"> -->
             </div>
             <div class="info">
               <a class="d-block">Hoşgeldin </a>
@@ -47,8 +46,33 @@
               <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
       
+                     <li  class="nav-item text-white">
+                      <a class="nav-link text-white">
+                        <i class="nav-icon fa fa-flag-checkered" aria-hidden="true"></i>
+                        <p class="text-white">
+                          İşletme İşlemleri
+                          <i class="fas fa-angle-left right"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a routerLink="/admin/list-fair" class="nav-link">
+                            <i class="nav-icon fa fa-list-ol" aria-hidden="true"></i>
+                            <p class="text-white">Fuar Listesi</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a routerLink="/admin/add-fair" class="nav-link">
+                            <i class="nav-icon fa fa-plus-circle" aria-hidden="true"></i>
+                            <p class=" text-white">Fuar Ekle</p>
+                          </a>
+                        </li>
+            
+                      </ul>
+                    </li>
+
               <li class="nav-item text-white">
-                <a  class="nav-link">
+                <a routerLink="/login" (click)="localStrogeClean()" class="nav-link">
                   <i class="nav-icon fa fa-times"></i>
                   <p class="text-white">
                     Çıkış Yap

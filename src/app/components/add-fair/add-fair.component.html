@@ -1,0 +1,39 @@
+<div class="card card-primary mt-3">
+    <div class="card-header">
+        <h3 class="card-title">Fuar Kayıt Formu</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form [formGroup]="fairAddForm">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Fuar Adı</label>
+                <input class="form-control" formControlName="fairName" placeholder=" Fuarın Adı">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Fuar Logosu</label>
+                <div class="row">
+                    <!-- Move the app-uploads component to the left column -->
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <app-uploads (onUploadFinished)="uploadFinished($event)"> </app-uploads>
+                        </div>
+                    </div>
+                    <!-- Display the uploaded image in the right column -->
+                    <div class="col-md-6">
+                        <div>
+                            <!-- Bind the image source properly -->
+                            <img [src]="createImgPath(image)" *ngIf="image" style="width: 100px; height: 100px;">
+                            <!-- Optionally, display a placeholder or message if no image is uploaded -->
+                            <span *ngIf="!image">Henüz resim seçmediniz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" (click)="add()" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>

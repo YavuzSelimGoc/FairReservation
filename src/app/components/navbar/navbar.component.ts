@@ -12,4 +12,7 @@ export class NavbarComponent {
     this.isPushMenuOpen = !this.isPushMenuOpen;
   
   } 
+  localStrogeClean(){
+    localStorage.clear();
+  }
 }
