@@ -20,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddFairComponent } from './components/add-fair/add-fair.component';
 import { PdfSettingsComponent } from './components/pdf-settings/pdf-settings.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PdfSettingsComponent } from './components/pdf-settings/pdf-settings.com
     NavbarComponent,
     LoginComponent,
     AddFairComponent,
-    PdfSettingsComponent
+    PdfSettingsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

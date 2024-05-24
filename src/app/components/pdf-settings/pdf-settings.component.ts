@@ -1,27 +1,46 @@
+import { PdfSetting } from './../../models/pdfSetting';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PdfSettingService } from './../../services/pdf-setting.service';
 import { ToastrService } from 'ngx-toastr';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';
 import { QRCodeModule } from 'angularx-qrcode';
+import Swal from "sweetalert2"
 
 @Component({
   selector: 'app-pdf-settings',
   templateUrl: './pdf-settings.component.html',
   styleUrls: ['./pdf-settings.component.scss']
 })
-export class PdfSettingsComponent {
+export class PdfSettingsComponent implements OnInit{
+  pdfSetting:PdfSetting
+  pdfSettingUpdateForm:FormGroup
   @ViewChild('previewContainer') previewContainer: ElementRef;
 
-  constructor(private toastrService:ToastrService){}
-  selectedPosition: string = 'center'; 
-
-  selectedAlignment: string = 'image-left'; // Varsayılan düzen
-  imageSize: number = 50; // Varsayılan resim boyutu
-  qrSize: number = 50;
+  constructor(private toastrService:ToastrService,private pdfSettingService:PdfSettingService,private formBuilder:FormBuilder){}
+  selectedPosition: string 
+  selectedAlignment: string  // Varsayılan düzen
+  imageSize: number  // Varsayılan resim boyutu
+  qrSize: number 
 
 
   
   containerStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' };
 
+  ngOnInit(): void {
+    this.initForm();
+ this.getPdfSettingsById()
+  }
+
+  getPdfSettingsById(){
+    this.pdfSettingService.getPdfSettingById(1).subscribe((response) => {
+      this.pdfSetting=response.data;
+      this.selectedPosition=this.pdfSetting.positionSelect
+      this.selectedAlignment=this.pdfSetting.alignmentSelect
+      this.imageSize=this.pdfSetting.imageSize
+      this.qrSize=this.pdfSetting.qrSize
+    });
+  }
 
 
   
@@ -74,5 +93,58 @@ export class PdfSettingsComponent {
     });
   }
 
+  initForm(){
+    this.pdfSettingUpdateForm=this.formBuilder.group({
+      id:["",Validators.required],
+      alignmentSelect:["",Validators.required],
+      positionSelect:["",Validators.required],
+      imageSize:["",Validators.required],
+      qrSize:["",Validators.required],
+    })
+  }
+
+  update(){
+    this.pdfSettingUpdateForm.controls['alignmentSelect'].setValue(this.selectedAlignment);
+    this.pdfSettingUpdateForm.controls['positionSelect'].setValue(this.selectedPosition);
+    this.pdfSettingUpdateForm.controls['imageSize'].setValue(this.imageSize);
+    this.pdfSettingUpdateForm.controls['qrSize'].setValue(this.qrSize);
+    this.pdfSettingUpdateForm.controls['id'].setValue(this.pdfSetting.id);
+console.log(this.pdfSettingUpdateForm.value)
+    if(this.pdfSettingUpdateForm.valid){
+      let updateModel =Object.assign({},this.pdfSettingUpdateForm.value) 
+      this.pdfSettingService.update(updateModel).subscribe(response=>{
+      Swal.fire("Güncellendi","Güncelleme işlemi başarılı","success")
+      });
+    }
+    else {
+  
+    } 
+  }
+  updateBox()
+  {
+    Swal.fire({
+      title:"Emin Misiniz",
+      text:"Güncellemek İstediğinize Emin Misiniz ?",
+      icon:"warning",
+      showCancelButton:true,
+      confirmButtonText:'Evet, Güncellensin',
+      cancelButtonText:'Hayır, Güncellenmesin'
+    }).then((result=>{
+      if(result.value){
+        this.update();
+        
+      }
+      else if (result.dismiss===Swal.DismissReason.cancel){
+        Swal.fire("Güncellenmedi!","Güncelleme İşleminden Vazgeçildi","error")
+      }
+    }))
+  }
+  
+
 
 }
+
+
+
+
+

@@ -1,5 +1,5 @@
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -9,12 +9,21 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,AfterViewInit {
   loginForm:FormGroup;
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private router:Router,private toastrService:ToastrService) { this.loadExternalStylesheets();
-  }
+  load = true;
+  constructor(private formBuilder:FormBuilder,private authService:AuthService,private router:Router,private toastrService:ToastrService) { }
   ngOnInit(): void {
     this.createLoginForm();
+  }
+  ngAfterViewInit(): void {
+ 
+      this.loadExternalStylesheets();
+      this.load = !this.load
+  
+   }
+   loadFunc() {
+    this.load = !this.load;
   }
   createLoginForm(){
     this.loginForm = this.formBuilder.group({

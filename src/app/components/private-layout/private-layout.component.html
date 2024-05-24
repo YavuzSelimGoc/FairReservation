@@ -1,8 +1,13 @@
-<app-navbar ></app-navbar>
-<div class="content-wrapper">
-    <section class="content">
-        <div class="container-fluid">
-<router-outlet></router-outlet>
-        </div>
-    </section>
+<div *ngIf="!load">
+    <app-navbar ></app-navbar>
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+    <router-outlet></router-outlet>
+            </div>
+        </section>
+    </div>
+</div>
+<div *ngIf="load">
+<app-loader></app-loader>
 </div>

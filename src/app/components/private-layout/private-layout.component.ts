@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-private-layout',
@@ -6,11 +6,16 @@ import { AfterViewInit, Component } from '@angular/core';
   styleUrls: ['./private-layout.component.scss']
 })
 export class PrivateLayoutComponent implements AfterViewInit {
+  load = true;
 
-  constructor() { }
+  constructor(private ngZone: NgZone) {
+  }
 
   ngAfterViewInit(): void {
+
     this.loadExternalStylesheets();
+          this.load = !this.load;
+
   }
 
   loadExternalStylesheets() {
