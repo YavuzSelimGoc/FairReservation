@@ -1,20 +1,46 @@
-<div class="modal" style="width: 100%;" tabindex="-1" id="exampleModal">
-    <div class="modal-dialog">
+<div>
+  <div class="modal" style="width: 100%;" tabindex="-1" id="kvkk">
+    <div class="modal-dialog col-md-12">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Operasyon Seç</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title">KVKK METNİ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModel()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body my-5">
+          <div [innerHTML]="fair.kvkkText">
+          </div>
+          <button (click)="kvkkAccept()" class="btn btn-info">Okudum. Kabul Ediyorum.</button>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
+  
+  <div class="modal" style="width: 100%;" tabindex="-1" id="et">
+    <div class="modal-dialog col-md-12">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">ELEKTRONİK İLETİ ONAY METNİ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModelEt()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div [innerHTML]="fair.etText">
+          </div>
+          <button (click)="etAccept()" class="btn btn-info">Okudum. Kabul Ediyorum.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <app-header></app-header>
+
     <main>
       <!-- Steps Area Start -->
       <section class="steps-area py-5 news">
         <div class="container">
           <div class="d-flex flex-column  justify-content-between align-items-md-center">
             <div class="mb-3 mb-md-0 news">
-              <h2 class="title form2 item-center">Ziyaretçi Formu</h2>
+              <h3 class="title form2 item-center">Ziyaretçi Formu</h3>
               <p class="title form2 p">Formu doldurun, dijital bilete sahip olun!</p>
             </div>
           </div>
@@ -29,7 +55,7 @@
         
               <div class="col-md-4 field">
                 <input type="text" name="name" formControlName="name"  placeholder="Adınız & Soyadınız*" id="name" required>
-                <label for="name" data-title="Firmanızın Adı*"></label>
+                <label for="name" data-title="Adınız & Soyadınız*"></label>
                 <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger">
                   Bu alan zorunludur.
                 </div>
@@ -92,25 +118,18 @@
                 </div>
               </div>
               <div class="col-md-4 field">
-                <select formControlName="country"  [(ngModel)]="selectCountry"  name="countries" id="">
+                <select formControlName="country" [(ngModel)]="selectCountry" name="countries" id="" (change)="onCountryChange($event)">
                   <option value="Ülke*">Ülke*</option>
-                  <option value="Türkiye">Türkiye</option>
-                  <option value="Mısır">Mısır</option>
-                  <option value="Azerbeycan">Azerbeycan</option>
-                  <option value="Almanya">Almanya</option>
+                  <option *ngFor="let item of country" [value]="item.countryId">{{item.countryName}}</option>
                 </select>
                 <div *ngIf="f['country'].invalid && (f['country'].dirty || f['country'].touched)" class="text-danger">
                   Bu alan zorunludur.
                 </div>
               </div>
-
               <div class="col-md-4 field">
-                <select formControlName="city" name="cities"  [(ngModel)]="selectCity"  id="">
+                <select formControlName="city" [(ngModel)]="selectCity" name="cities" id="">
                   <option value="Şehir*">Şehir*</option>
-                  <option value="Ankara ">Ankara </option>
-                  <option value="İstanbul ">İstanbul </option>
-                  <option value="Antalya ">Antalya </option>
-                  <option value="Muğla ">Muğla </option>
+                  <option *ngFor="let item of City" [value]="item.cityName">{{item.cityName}}</option>
                 </select>
                 <div *ngIf="f['city'].invalid && (f['city'].dirty || f['city'].touched)" class="text-danger">
                   Bu alan zorunludur.
@@ -118,20 +137,20 @@
               </div>
 
             </div>
-            <p class="mt-5">Kullanım Şartları ve Gizlilik/Kişisel Verilerin Korunması Politikası ve Aydınlatma Metni'ne buradan ulaşabilirsiniz.</p>
+
             <p class="mt-5">
               <strong>Kişisel Verilerin İşlenmesine Yönelik Açık Rıza Beyanı</strong>
             </p>
             <div class="d-flex align-items-baseline">
               <input type="checkbox" name="statement" id="statement" class="me-2 me-md-3">
-              <label for="statement">Paylaşmış olduğum bilgilerin Toyota güvencesinde, incelediğim ve kabul ettigim Toyota‘nin Kişisel Verilerin Korunması ve işlenmesine ilişkin Aydınlatma Metnini okudum. Kisisel verilerimin aydınlatma metninde belirtilen amaclar icin yasalara, kullanım amacına uygun şekilde saklanarak işlenmesini ve paylaşılmasını kabul edip onaylıyorum. Toyota Aydınlatma Metni’ne uygun olarak Ürün ve hizmetlerinizin sunulması için kişisel verilerimin Toyota bayileri ile is ortaklarınıza ve iştiraklerine aktarılmasını açık rızam ile kabul edip onaylıyorum.</label>
+              <label for="statement" (click)="openModel()" >Buradan Ulaşabilirsinizi</label>
             </div>
             <p class="mt-5">
               <strong>Elektronik Ticari İleti Gönderimine İlişkin Onay</strong>
             </p>
             <div class="d-flex align-items-baseline">
               <input type="checkbox" name="e-com" id="eCom" class="me-2 me-md-3">
-              <label for="eCom">İzinli iletişim formunu okuduğumu ve onayladığımı kabul ederim. Toyota Aydınlatma Metnine uygun olarak ürün ve hizmetlerinizin sunulması için kişisel verilerimin Toyota Motor Europe NV/SA, Toyota Motor Corporation ile iş ortaklarına ve iştiraklerine aktarılabileceğini onaylıyorum. (Sözleşmeyi oku)</label>
+              <label for="eCom" (click)="openModelEt()">Buradan Ulaşabilirsiniz</label>
             </div>
             <button class="primary-btn mt-5 bg-dark text-white" id="form-submit-btn"  (click)="add()">Gönder</button>
           </form>
@@ -146,4 +165,5 @@
    
       <!-- Popup End -->
     </main>
-    <!-- Bootstrap 5 JS CDN -->
+</div>
+

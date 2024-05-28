@@ -30,6 +30,11 @@ export class PdfSettingService {
     return this.httpClient
        .get<ResponseModel_Data<PdfSetting>>(newPath);
    }
+   getPdfSettingByFairId(fairId):Observable <ResponseModel_Data<PdfSetting>> {
+    let newPath=this.apiUrls + "PdfSetting/GetByFairId/?id="+fairId
+    return this.httpClient
+       .get<ResponseModel_Data<PdfSetting>>(newPath);
+   }
   delete(pdfSetting:PdfSetting){
     let newPath=this.apiUrls + "PdfSetting/delete"
     return this.httpClient.post(newPath,pdfSetting)

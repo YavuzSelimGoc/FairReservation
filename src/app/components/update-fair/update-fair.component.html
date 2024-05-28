@@ -4,7 +4,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form [formGroup]="fairAddForm">
+    <form [formGroup]="fairUpdateForm">
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Fuar Adı</label>
@@ -12,6 +12,8 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Fuar Logosu</label>
+
+
                 <div class="row">
                     <!-- Move the app-uploads component to the left column -->
                     <div class="col-md-6 mb-3">
@@ -21,12 +23,20 @@
                     </div>
                     <!-- Display the uploaded image in the right column -->
                     <div class="col-md-6">
-                        <div>
+                        <div class="col-md-3" *ngIf="sayac>0">
                             <!-- Bind the image source properly -->
+                            <label>Seçilen Logo</label>
+                            <img [src]="createImgPath(selectedImage)" style="width: 100px; height: 100px;">
+                            <!-- Optionally, display a placeholder or message if no image is uploaded -->
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Bind the image source properly -->
+                            <label>Varsayılan Logo</label>
                             <img [src]="createImgPath(image)" *ngIf="image" style="width: 100px; height: 100px;">
                             <!-- Optionally, display a placeholder or message if no image is uploaded -->
                             <span *ngIf="!image">Henüz resim seçmediniz</span>
                         </div>
+                      
                     </div>
 
                     <div class="form-group">
@@ -37,7 +47,7 @@
                           'media', 'table', 'emoticons', 'template', 'help'
                         ],}"></editor>  
                       </div>
-                      <div class="form-group">
+                      <div class="form-group mt-5">
                         <label for="exampleInputPassword1">Fuar Elektronik İleti Onay Metni</label>
                         <editor  formControlName="etText" apiKey="g3k9xwm9ro3n70peqgxv3n14swbazl5i9v9lmnxf4i109irq" [init]="{plugins: [
                           'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
@@ -50,7 +60,7 @@
         </div>
 
         <div class="card-footer">
-            <button type="submit" (click)="add()" class="btn btn-primary">Kaydet</button>
+            <button type="submit" (click)="updateBox()" class="btn btn-primary">Kaydet</button>
         </div>
     </form>
 </div>

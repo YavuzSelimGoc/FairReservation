@@ -2,6 +2,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -21,6 +22,13 @@ import { LoginComponent } from './components/login/login.component';
 import { AddFairComponent } from './components/add-fair/add-fair.component';
 import { PdfSettingsComponent } from './components/pdf-settings/pdf-settings.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AddPdfSettingComponent } from './components/add-pdf-setting/add-pdf-setting.component';
+import { ListFairComponent } from './components/list-fair/list-fair.component';
+import { UpdateFairComponent } from './components/update-fair/update-fair.component';
+import { FairPipe } from './pipes/fair.pipe';
+import { ListReservationComponent } from './components/list-reservation/list-reservation.component';
+import { ReservationPipe } from './pipes/reservation.pipe';
+import { SuccesComponent } from './components/succes/succes.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +43,18 @@ import { LoaderComponent } from './components/loader/loader.component';
     LoginComponent,
     AddFairComponent,
     PdfSettingsComponent,
-    LoaderComponent
+    LoaderComponent,
+    AddPdfSettingComponent,
+    ListFairComponent,
+    UpdateFairComponent,
+    FairPipe,
+    ListReservationComponent,
+    ReservationPipe,
+    SuccesComponent
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,

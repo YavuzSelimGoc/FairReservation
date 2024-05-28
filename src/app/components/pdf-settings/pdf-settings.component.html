@@ -1,9 +1,17 @@
 
 <div class="card card-primary mt-3">
   <div class="card-header">
-      <h3 class="card-title">Fuar Kayıt Formu</h3>
+      <h3 class="card-title">Pdf Ayarları Formu</h3>
   </div>
     <div class="card-body">
+
+      <div class="form-group">
+        <label for="alignmentSelect">Fuar Bilgisi:</label>
+        <select id="alignmentSelect" class="form-control" disabled>
+            <option *ngFor="let item of fair" [value]="item.fairId">{{item.fairName}}</option>
+        </select>
+    </div>
+    
 
       <div class="form-group">
         <label for="alignmentSelect">Düzen:</label>
@@ -12,6 +20,8 @@
           <option value="image-right">Resim Sağ, QR Sol</option>
         </select>
       </div>
+
+    
     
       <div class="form-group">
         <label for="imageSize">Resim Boyutu:</label>
@@ -40,7 +50,7 @@
     <!-- Önizleme Alanı -->
   
   
-    <button class="btn btn-primary" (click)="updateBox()">PDF Oluştur</button>
+    <button class="btn btn-primary" (click)="updateBox()">Güncelle</button>
     </div>
   
 </div>

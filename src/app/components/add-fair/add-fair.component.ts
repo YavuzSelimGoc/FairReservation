@@ -26,6 +26,8 @@ export class AddFairComponent implements OnInit{
     this.fairAddForm=this.formBuilder.group({
       fairName :["",Validators.required],
      fairLogo :["",Validators.required],
+     kvkkText :["",Validators.required],
+     etText :["",Validators.required],
     })
   }
   createPDF() {

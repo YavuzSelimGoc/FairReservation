@@ -1,0 +1,60 @@
+
+<div class="card card-primary mt-3">
+    <div class="card-header">
+        <h3 class="card-title">Pdf Ayarı Oluşturma Formu</h3>
+    </div>
+      <div class="card-body">
+  <form [formGroup]="pdfSettingAddForm">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Fuar Bilgisi</label>
+
+         <select class="form-select"  [(ngModel)]="selectFair"  formControlName="fairId" >
+            <option value="Fuar Seçiniz*">Fuar Seçiniz*</option>
+            <option *ngFor="let item of fairs" [value]="item.fairId">{{item.fairName}}</option>
+          </select> 
+    </div>
+
+        <div class="form-group">
+          <label for="alignmentSelect">Düzen:</label>
+          <select id="alignmentSelect" class="form-control" [(ngModel)]="selectLocation" formControlName="alignmentSelect" >
+            <option value="Konumlandırma Bilgisi Seçiniz*">Konumlandırma Bilgisi Seçiniz*</option>
+            <option value="image-left">Resim Sol, QR Sağ</option>
+            <option value="image-right">Resim Sağ, QR Sol</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label for="imageSize">Resim Boyutu:</label>
+          <input type="number" id="imageSize" class="form-control"  formControlName="imageSize"  placeholder="Boyut (px)" >
+        </div>
+      
+        <div class="form-group">
+          <label for="qrSize">QR Kod Boyutu:</label>
+          <input type="number" id="qrSize" class="form-control" formControlName="qrSize"  placeholder="Boyut (px)" >
+        </div>
+      
+        <div class="form-group">
+          <label for="positionSelect">QR Kod ve Resim Konumu:</label>
+          <select id="positionSelect" class="form-control" [(ngModel)]="selectAlligent" formControlName="positionSelect" >
+            <option value="Düzen Seçiniz*">Düzen Seçiniz*</option>
+            <option value="top-left">Sol Üst</option>
+            <option value="top-center">Orta Üst</option>
+            <option value="top-right">Sağ Üst</option>
+            <option value="middle-left">Sol Orta</option>
+            <option value="center">Tam Orta</option>
+            <option value="middle-right">Sağ Orta</option>
+            <option value="bottom-left">Sol Alt</option>
+            <option value="bottom-center">Orta Alt</option>
+            <option value="bottom-right">Sağ Alt</option>
+          </select>
+        </div>
+      <!-- Önizleme Alanı -->
+    
+    
+      <button class="btn btn-primary" (click)="add()" >Kaydet</button>
+          
+  </form>
+      </div>
+    
+  </div>

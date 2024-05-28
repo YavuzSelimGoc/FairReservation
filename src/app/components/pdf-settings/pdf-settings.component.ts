@@ -1,3 +1,5 @@
+import { Fair } from './../../models/fair';
+import { FairService } from './../../services/fair.service';
 import { PdfSetting } from './../../models/pdfSetting';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PdfSettingService } from './../../services/pdf-setting.service';
@@ -6,6 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';
 import { QRCodeModule } from 'angularx-qrcode';
 import Swal from "sweetalert2"
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pdf-settings',
@@ -14,32 +17,53 @@ import Swal from "sweetalert2"
 })
 export class PdfSettingsComponent implements OnInit{
   pdfSetting:PdfSetting
+  fair:Fair[]
   pdfSettingUpdateForm:FormGroup
   @ViewChild('previewContainer') previewContainer: ElementRef;
 
-  constructor(private toastrService:ToastrService,private pdfSettingService:PdfSettingService,private formBuilder:FormBuilder){}
+  constructor(private toastrService:ToastrService,private pdfSettingService:PdfSettingService,private fairService:FairService,private activatedroute:ActivatedRoute,private formBuilder:FormBuilder){this.initForm()}
   selectedPosition: string 
-  selectedAlignment: string  // Varsayılan düzen
-  imageSize: number  // Varsayılan resim boyutu
+  selectedAlignment: string  
+  selectedFair: string  
+  fairId:number
+  imageSize: number  
   qrSize: number 
-
-
   
   containerStyle = { position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' };
 
   ngOnInit(): void {
-    this.initForm();
- this.getPdfSettingsById()
+    this.activatedroute.params.subscribe(params=>{
+      if(params["fairId"]){
+        this.fairId=params["fairId"]
+        this.getPdfSettingsByFairId(params["fairId"])
+        this.getFair();
+      }
+      else{
+        this.getPdfSettingsByFairId(params["fairId"])
+        this.getFair();
+      }
+      })
+  }
+  getFair() {
+    this.fairService.getFair().subscribe(repsonse => {
+      this.fair = repsonse.data  
+      console.log(this.fair)
+    })
   }
 
-  getPdfSettingsById(){
-    this.pdfSettingService.getPdfSettingById(1).subscribe((response) => {
+
+  getPdfSettingsByFairId(id:number){
+    this.pdfSettingService.getPdfSettingByFairId(id).subscribe((response) => {
       this.pdfSetting=response.data;
       this.selectedPosition=this.pdfSetting.positionSelect
       this.selectedAlignment=this.pdfSetting.alignmentSelect
       this.imageSize=this.pdfSetting.imageSize
       this.qrSize=this.pdfSetting.qrSize
     });
+    this.fairService.getFairById(this.fairId).subscribe((response) => {
+      this.selectedFair=response.data.fairName
+    });
+    
   }
 
 
@@ -96,6 +120,7 @@ export class PdfSettingsComponent implements OnInit{
   initForm(){
     this.pdfSettingUpdateForm=this.formBuilder.group({
       id:["",Validators.required],
+      fairId:["",Validators.required],
       alignmentSelect:["",Validators.required],
       positionSelect:["",Validators.required],
       imageSize:["",Validators.required],
@@ -106,6 +131,7 @@ export class PdfSettingsComponent implements OnInit{
   update(){
     this.pdfSettingUpdateForm.controls['alignmentSelect'].setValue(this.selectedAlignment);
     this.pdfSettingUpdateForm.controls['positionSelect'].setValue(this.selectedPosition);
+    this.pdfSettingUpdateForm.controls['fairId'].setValue(this.fairId);
     this.pdfSettingUpdateForm.controls['imageSize'].setValue(this.imageSize);
     this.pdfSettingUpdateForm.controls['qrSize'].setValue(this.qrSize);
     this.pdfSettingUpdateForm.controls['id'].setValue(this.pdfSetting.id);

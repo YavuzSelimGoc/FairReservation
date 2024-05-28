@@ -1,6 +1,8 @@
 export interface Fair{
-    FairId:number
-    FairName:string
-    FairLogo:string
-    FairStatus:boolean
+    fairId:number
+    fairName:string
+    fairLogo:string
+    kvkkText:string
+    etText:string
+    fairStatus:boolean
 }
