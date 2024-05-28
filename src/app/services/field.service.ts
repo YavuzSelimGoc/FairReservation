@@ -21,6 +21,10 @@ export class FieldService {
     let newPath=this.apiUrls+"Field/getall";
     return this.httpClient.get<ListResponseModel<Field>>(newPath)
   }
+  getFieldByFairId(id:number):Observable<ListResponseModel<Field>>{
+    let newPath=this.apiUrls+"Field/getListByFairId/?fairId="+id;
+    return this.httpClient.get<ListResponseModel<Field>>(newPath)
+  }
   getFieldActive():Observable<ListResponseModel<Field>>{
     let newPath=this.apiUrls+"Field/getallActive";
     return this.httpClient.get<ListResponseModel<Field>>(newPath)

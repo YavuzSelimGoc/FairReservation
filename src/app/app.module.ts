@@ -29,6 +29,12 @@ import { FairPipe } from './pipes/fair.pipe';
 import { ListReservationComponent } from './components/list-reservation/list-reservation.component';
 import { ReservationPipe } from './pipes/reservation.pipe';
 import { SuccesComponent } from './components/succes/succes.component';
+import { ReservationDynamicComponent } from './components/reservation-dynamic/reservation-dynamic.component';
+import { ListFieldComponent } from './components/list-field/list-field.component';
+import { FieldPipe } from './pipes/field.pipe';
+import { AddFieldComponent } from './components/add-field/add-field.component';
+import { AddOptionComponent } from './components/add-option/add-option.component';
+import { ListOptionComponent } from './components/list-option/list-option.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,13 @@ import { SuccesComponent } from './components/succes/succes.component';
     FairPipe,
     ListReservationComponent,
     ReservationPipe,
-    SuccesComponent
+    SuccesComponent,
+    ReservationDynamicComponent,
+    ListFieldComponent,
+    FieldPipe,
+    AddFieldComponent,
+    AddOptionComponent,
+    ListOptionComponent
   ],
   imports: [
     BrowserModule,

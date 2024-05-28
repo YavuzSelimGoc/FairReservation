@@ -1,0 +1,19 @@
+<div class="card card-primary mt-3">
+    <div class="card-header">
+        <h3 class="card-title">Opsiyon Ekleme Formu</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form [formGroup]="optionAddForm">
+        <div class="card-body">
+              <div class="form-group">
+                <label >Opsiyon Adı</label>
+                <input  class="form-control" formControlName="optionName" >
+              </div>
+            </div>
+
+        <div class="card-footer">
+            <button type="submit" (click)="add()" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>

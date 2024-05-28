@@ -269,4 +269,6 @@ etAccept(){
     return environment.imgUrl+`${serverPath}`; 
     
   }
+
+  
 }

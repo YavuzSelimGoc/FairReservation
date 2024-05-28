@@ -1,0 +1,104 @@
+
+    <div class="modal" style="width: 100%;" tabindex="-1" id="kvkk">
+        <div class="modal-dialog col-md-12">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">KVKK METNİ</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModel()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body my-5">
+              <div [innerHTML]="fair.kvkkText">
+              </div>
+              <button (click)="kvkkAccept()" class="btn btn-info">Okudum. Kabul Ediyorum.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal" style="width: 100%;" tabindex="-1" id="et">
+        <div class="modal-dialog col-md-12">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">ELEKTRONİK İLETİ ONAY METNİ</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModelEt()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div [innerHTML]="fair.etText">
+              </div>
+              <button (click)="etAccept()" class="btn btn-info">Okudum. Kabul Ediyorum.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <app-header></app-header>
+    
+    <main>
+      <!-- Steps Area Start -->
+      <section class="steps-area py-5 news">
+        <div class="container">
+          <div class="d-flex flex-column justify-content-between align-items-md-center">
+            <div class="mb-3 mb-md-0 news">
+              <h3 class="title form2 item-center">Ziyaretçi Formu</h3>
+              <p class="title form2 p">Formu doldurun, dijital bilete sahip olun!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <section class="form-area py-3">
+        <div class="container">
+          <h1 class="form-heading form2">Bilgilerim</h1>
+          <form [formGroup]="reservationForm">
+            <div class="row g-5 pb-4">
+                <div *ngFor="let field of formFields" class="col-md-4">
+                  <label class="uppercase-label mb-2">{{ field.fieldName }}</label>
+                  <ng-container [ngSwitch]="field.fieldType">
+                    <input
+                      *ngSwitchCase="'string'"
+                      type="text"
+                      [formControlName]="field.fieldName"
+                      class="form-control"
+                      [placeholder]="field.fieldName"
+                    />
+                    <input
+                      *ngSwitchCase="'number'"
+                      type="number"
+                      [formControlName]="field.fieldName"
+                      class="form-control"
+                    />
+                    <select
+                      *ngSwitchCase="'select'"
+                      [formControlName]="field.fieldName"
+                      class="form-select"
+                    >
+                      <option *ngFor="let option of field.options" [value]="option.optionName">{{ option.optionName }}</option>
+                    </select>
+                  </ng-container>
+                </div>
+              </div>
+              <p class="mt-5">
+                <strong>Kişisel Verilerin İşlenmesine Yönelik Açık Rıza Beyanı</strong>
+              </p>
+              <div class="d-flex align-items-baseline">
+                <input type="checkbox" name="statement" id="statement" class="me-2 me-md-3">
+                <label for="statement" (click)="openModel()" >Buradan Ulaşabilirsinizi</label>
+              </div>
+              <p class="mt-5">
+                <strong>Elektronik Ticari İleti Gönderimine İlişkin Onay</strong>
+              </p>
+              <div class="d-flex align-items-baseline">
+                <input type="checkbox" name="e-com" id="eCom" class="me-2 me-md-3">
+                <label for="eCom" (click)="openModelEt()">Buradan Ulaşabilirsiniz</label>
+              </div>
+              
+              <button class="primary-btn mt-5 bg-dark text-white" id="form-submit-btn"  (click)="add()">Gönder</button>
+            </form>
+        </div>
+      </section>
+    </main>
+
+<!-- 
+<div *ngIf="load">
+    <app-loading></app-loading>
+</div> -->
