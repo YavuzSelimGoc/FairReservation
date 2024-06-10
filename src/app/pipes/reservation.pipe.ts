@@ -12,8 +12,7 @@ export class ReservationPipe implements PipeTransform {
       ? value.filter(
           (p: Reservation) =>
             p.phoneNumber.toLocaleLowerCase().includes(filtertext) ||
-            p.name.toLocaleLowerCase().includes(filtertext) ||
-            p.mail.toLocaleLowerCase().includes(filtertext) 
+            p.name.toLocaleLowerCase().includes(filtertext) 
         )
       : value;
   }

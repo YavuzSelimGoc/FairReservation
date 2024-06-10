@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of reservation | reservation: filtertext" class="text-center align-middle">
+                <tr *ngFor="let item of reservations | reservation: filtertext" class="text-center align-middle">
                     <td class="align-middle">{{item.name}}</td>
                     <td class="align-middle">{{item.phoneNumber}}</td>
                     <td class="align-middle">{{item.mail}}</td>

@@ -17,11 +17,11 @@ export class AddFairComponent implements OnInit{
   image:string
    isTrue:boolean
    public resp: {dbPath:''};
-   constructor(private formBuilder:FormBuilder,private toastrService:ToastrService,
-    private fairService:FairService,private router:Router) { }
-   ngOnInit(): void {
-  this.createFairAddForm()
-   }
+   constructor(private formBuilder:FormBuilder,private toastrService:ToastrService, private fairService:FairService,private router:Router) { }
+   
+  ngOnInit(): void {
+     this.createFairAddForm()
+  }
    createFairAddForm(){
     this.fairAddForm=this.formBuilder.group({
       fairName :["",Validators.required],
@@ -48,11 +48,31 @@ export class AddFairComponent implements OnInit{
   add(){
     this.fairAddForm.controls['fairLogo'].setValue(this.resp.dbPath);
     if(this.fairAddForm.valid){
-      let fairModel =Object.assign({},this.fairAddForm.value) 
-      this.fairService.add(fairModel).subscribe(response=>{
-        this.router.navigate(["/admin"])
-        this.toastrService.success("Fuar Ekleme İşlemi Başarılı","Tebrikler")
+      let fairModel = Object.assign({},this.fairAddForm.value) 
+      this.fairService.add(fairModel).subscribe({
+        next: (response) => {
+          this.testDriveService.add(testDriveModel).subscribe({
+            next: (response) => {
+              this.openPopup();
+              this.isLoad = false;
+            },
+            error: (error) => {
+              this.isLoad = false;
+              this.handleErrorResponse(error);
+            }
+          });
+        },
+        error: (error) => {
+          this.isLoad = false;
+          this.handleErrorResponse(error);
+        }
       });
+
+      this.fairService.add(fairModel).subscribe(response=>{
+        this.router.navigate(["/admin/list-fair"])
+        this.toastrService.success("Fuar Ekleme İşlemi Başarılı","Tebrikler")
+      })
+      ;
     }
     else {
       console.log(this.fairAddForm.value)
@@ -69,6 +89,17 @@ export class AddFairComponent implements OnInit{
 
    createImgPath = (serverPath: string) => { 
     return environment.imgUrl+`${serverPath}`; 
+  }
+  handleErrorResponse(error) {
+    if (error.status === 400) {
+      this.toastrService.error("Geçersiz istek. Lütfen bilgilerinizi kontrol edin.", "Hata 400");
+    } else if (error.status === 401) {
+      this.toastrService.error("Yetkilendirme hatası. Lütfen giriş yapın.", "Hata 401");
+    } else if (error.status === 500) {
+      this.toastrService.error("Sunucu hatası. Lütfen daha sonra tekrar deneyin.", "Hata 500");
+    } else {
+      this.toastrService.error("Bilinmeyen bir hata oluştu.", "Hata");
+    }
   }
 
 }

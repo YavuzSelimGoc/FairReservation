@@ -26,7 +26,9 @@ createFieldAddForm(){
     fairId :["",Validators.required],
     fieldName :["",Validators.required],
    fieldType :["",Validators.required],
+   fieldLable :["",Validators.required],
    fieldStatus :[true,Validators.required],
+   Order :[true,Validators.required],
   })
 }
 getFair() {

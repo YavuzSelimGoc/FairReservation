@@ -35,6 +35,7 @@ import { FieldPipe } from './pipes/field.pipe';
 import { AddFieldComponent } from './components/add-field/add-field.component';
 import { AddOptionComponent } from './components/add-option/add-option.component';
 import { ListOptionComponent } from './components/list-option/list-option.component';
+import { UpdateFieldComponent } from './components/update-field/update-field.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ListOptionComponent } from './components/list-option/list-option.compon
     FieldPipe,
     AddFieldComponent,
     AddOptionComponent,
-    ListOptionComponent
+    ListOptionComponent,
+    UpdateFieldComponent
   ],
   imports: [
     BrowserModule,

@@ -73,14 +73,41 @@
                   </ul>
                 </li>
 
-                <li class="nav-item text-white">
-                  <a routerLink="/admin/add-field"  class="nav-link">
-                    <i class="nav-icon fa fa-plus" aria-hidden="true"></i>
+                <li  class="nav-item text-white">
+                  <a class="nav-link text-white">
+                    <i class="nav-icon fa fa-flag-checkered" aria-hidden="true"></i>
                     <p class="text-white">
-                      Alan Ekle
+                      Alan İşlemleri
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a routerLink="/admin/list-field" class="nav-link">
+                        <i class="nav-icon fa fa-list-ol" aria-hidden="true"></i>
+                        <p class="text-white">Alan Listesi</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a routerLink="/admin/add-field" class="nav-link">
+                        <i class="nav-icon fa fa-plus-circle" aria-hidden="true"></i>
+                        <p class=" text-white">Alan Ekle</p>
+                      </a>
+                    </li>
+        
+                  </ul>
+                </li>
+
+                <li class="nav-item text-white">
+                  <a routerLink="/admin/list-reservation" class="nav-link">
+                    <i class="nav-icon fa fa-window-close" aria-hidden="true"></i>
+                    <p class="text-white">
+                      Rezervasyon Listesi
                     </p>
                   </a>
                 </li>
+
+              
           <li class="nav-item text-white">
             <a routerLink="/login" (click)="localStrogeClean()" class="nav-link">
               <i class="nav-icon fa fa-window-close" aria-hidden="true"></i>

@@ -45,33 +45,38 @@ export class ReservationDynamicComponent implements OnInit{
 ngOnInit(): void {
   this.getDefaultFairId()
   this.getPdfSettingsById()
-
+  this.load=true
   this.kvkk=false
   this.et=false
-  this.load=true
   this.reservationForm = this.fb.group({});  
-
   this.formModel= new window.bootstrap.Modal(
     document.getElementById("kvkk")
   );
   this.formModel2= new window.bootstrap.Modal(
     document.getElementById("et")
   );
+  this.addFairIdField()
+  
 }
 getField(id: number): void {
   this.fieldService.getFieldByFairId(id).subscribe(response => {
-    const fields: Field[] = response.data;
+    let fields: Field[] = response.data;
+
+    fields = fields.sort((a, b) => a.order - b.order);
+
     fields.forEach(field => {
-      if (field.fieldStatus) {  // Check if fieldStatus is true
+      if (field.fieldStatus) {  
         const formField: FormField = {
           fieldId: field.fieldId,
           fieldType: field.fieldType,
-          fieldName: field.fieldName
+          fieldName: field.fieldName,
+          fieldLable:field.fieldLable,
+          order: field.order
         };
 
         if (field.fieldType === 'select') {
           this.getOption(field.fieldId).then(options => {
-            const validOptions = options.filter(option => option.optionStatus); // Check if optionStatus is true
+            const validOptions = options.filter(option => option.optionStatus); 
             if (validOptions.length > 0) {
               formField.options = validOptions;
               this.addFieldToForm(formField);
@@ -83,6 +88,7 @@ getField(id: number): void {
       }
     });
   });
+  this.load=false
 }
 
 
@@ -101,6 +107,17 @@ getOption(fieldId: number): Promise<FormFieldOption[]> {
     }, error => reject(error));
   });
 }
+  addFairIdField(): void {
+    console.log(this.defaultFairId)
+    const fairIdField = {
+      fieldType: 'text',
+      fieldName: 'fairId',
+      order:'0'
+    };
+    const control = this.fb.control(this.defaultFairId, Validators.required);
+    this.reservationForm.addControl(fairIdField.fieldName, control);
+  }
+
 addFieldToForm(formField: FormField): void {
   this.formFields.push(formField);
   const control = this.fb.control('', Validators.required);
@@ -148,9 +165,19 @@ createPDF() {
       pdf.addImage(logoImage, 'PNG', position.x + this.qrSize, position.y, this.imageSize, this.imageSize);
     }
 
+    // Yazıları ekle
+    pdf.setTextColor(0, 0, 0); // Siyah renk
+    pdf.setFontSize(12);
+    pdf.text(`Name: ${this.reservationForm.get('name')?.value}`, position.x, position.y + this.qrSize + 10);
+    pdf.text(`Country: ${this.reservationForm.get('country')?.value}`, position.x, position.y + this.qrSize + 20);
+    pdf.text(`Phone Number: ${this.reservationForm.get('phoneNumber')?.value}`, position.x, position.y + this.qrSize + 30);
+
     pdf.save(this.reservationForm.get('name')?.value);
   });
 }
+
+
+
 
 getPdfSettingsById() {
   this.getDefaultFairId().then((defaultFairId) => {
@@ -194,6 +221,7 @@ this.defaultFairId=defaultFairId
   }
 
 add(){
+  this.reservationForm.controls['fairId'].setValue(this.defaultFairId);
 
   if (!this.et && !this.kvkk) {
     this.toastrService.error("Kvkk ve Elektronik İleti onay metinlerini onaylayınız.");

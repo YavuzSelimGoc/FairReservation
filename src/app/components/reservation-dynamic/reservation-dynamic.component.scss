@@ -2,4 +2,20 @@
     text-transform: uppercase;
     font-weight: bold;
   }
-  
+@media (max-width: 767px) {
+  .steps-area .container {
+    text-align: center;
+  }
+
+  .steps-area .news {
+    text-align: center;
+  }
+
+  .steps-area .title.form2 {
+    text-align: center;
+  }
+
+  .steps-area .title.form2.p {
+    text-align: center;
+  }
+}

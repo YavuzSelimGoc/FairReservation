@@ -1,4 +1,4 @@
-export interface FormFieldOption {
+export interface FormFieldOption  {
     optionId: number;
     optionName: string;
     optionStatus:boolean

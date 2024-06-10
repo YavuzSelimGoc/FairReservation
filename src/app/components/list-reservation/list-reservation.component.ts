@@ -1,4 +1,4 @@
-import { Reservation } from './../../models/reservation';
+import { Reservation } from '../../models/reservation';
 import { DefaultFairService } from '../../services/default-fair.service';
 import { ReservationService } from './../../services/reservation.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,17 +8,30 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './list-reservation.component.html',
   styleUrls: ['./list-reservation.component.scss']
 })
-export class ListReservationComponent implements OnInit{
-  filtertext="";
-  reservation:Reservation[]
-  constructor(private reservationService:ReservationService ,private defaultFairService:DefaultFairService){}
+export class ListReservationComponent implements OnInit {
+  filtertext = "";
+  reservations: Reservation[];
+  defaultFairId: number;
 
-ngOnInit(): void {
-  this.getFair()
-}
-getFair() {
-  this.reservationService.getReservation().subscribe(repsonse => {
-    this.reservation = repsonse.data  
-  })
-}
+  constructor(
+    private reservationService: ReservationService,
+    private defaultFairService: DefaultFairService
+  ) {}
+
+  ngOnInit(): void {
+    this.getDefaultFair();
+  }
+
+  getDefaultFair() {
+    this.defaultFairService.getDefaultFair().subscribe(response => {
+      this.defaultFairId = response.data[0].fairId;
+      this.getFair(); // Call getFair after defaultFairId is set
+    });
+  }
+
+  getFair() {
+    this.reservationService.getReservation().subscribe(response => {
+      this.reservations = response.data.filter(reservation => reservation.fairId === this.defaultFairId);
+    });
+  }
 }

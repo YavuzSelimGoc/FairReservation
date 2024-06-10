@@ -14,6 +14,7 @@ export class PrivateLayoutComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    
     this.loadCustomJsFiles();
     this.loadExternalStylesheets();
     

@@ -8,7 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';
 import { QRCodeModule } from 'angularx-qrcode';
 import Swal from "sweetalert2"
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pdf-settings',
@@ -21,7 +21,7 @@ export class PdfSettingsComponent implements OnInit{
   pdfSettingUpdateForm:FormGroup
   @ViewChild('previewContainer') previewContainer: ElementRef;
 
-  constructor(private toastrService:ToastrService,private pdfSettingService:PdfSettingService,private fairService:FairService,private activatedroute:ActivatedRoute,private formBuilder:FormBuilder){this.initForm()}
+  constructor(private toastrService:ToastrService,private pdfSettingService:PdfSettingService,private router:Router,private fairService:FairService,private activatedroute:ActivatedRoute,private formBuilder:FormBuilder){this.initForm()}
   selectedPosition: string 
   selectedAlignment: string  
   selectedFair: string  
@@ -140,6 +140,8 @@ console.log(this.pdfSettingUpdateForm.value)
       let updateModel =Object.assign({},this.pdfSettingUpdateForm.value) 
       this.pdfSettingService.update(updateModel).subscribe(response=>{
       Swal.fire("Güncellendi","Güncelleme işlemi başarılı","success")
+      this.router.navigate(["/admin/list-fair"])
+
       });
     }
     else {

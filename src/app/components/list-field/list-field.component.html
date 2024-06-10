@@ -32,8 +32,14 @@
                         colspan="1" aria-sort="ascending"
                         aria-label="Rendering engine: activate to sort column descending">Alanın Tipi
                     </th>
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                    colspan="1" aria-sort="ascending"
+                    aria-label="Rendering engine: activate to sort column descending">Alanın Sırası
+                </th>
                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                         aria-label="CSS grade: activate to sort column ascending">Durum</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                        aria-label="CSS grade: activate to sort column ascending">Güncelle</th>
                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                         aria-label="CSS grade: activate to sort column ascending">Sil</th>
                 </tr>
@@ -41,11 +47,14 @@
             <tbody>
                 <tr *ngFor="let item of field | field: filtertext" class="text-center align-middle">
                     <td class="align-middle">{{item.fieldName}}</td>
-                    <td class="align-middle">{{item.fieldType}} <a *ngIf="item.fieldType==='select'" routerLink="/admin/add-option/{{item.fieldId}}">Seçenek Ekle</a> <a *ngIf="item.fieldType==='select'" routerLink="/admin/list-option/{{item.fieldId}}">Seçenekleri Görüntüle</a> </td>
+                    <td class="align-middle"><p  >{{item.fieldType}} </p> <br> <a *ngIf="item.fieldType==='select'" class="text-danger" routerLink="/admin/add-option/{{item.fieldId}}">Seçenek Ekle</a> <br> <a class="text-info" *ngIf="item.fieldType==='select'" routerLink="/admin/list-option/{{item.fieldId}}">Seçenekleri Görüntüle</a> </td>
+                    <td class="align-middle">{{item.order}}</td>
                     <td class="align-middle">
                         <a *ngIf="!item.fieldStatus" (click)="active(item);" href="admin/list-field" class="btn btn-success">Aktif Et</a>
                         <a *ngIf="item.fieldStatus" (click)="passive(item);" href="admin/list-field" class="btn btn-warning">Pasif Et</a>
                     </td>
+                  <td class="align-middle"> <a   href="admin/update-field/{{item.fieldId}}" class="btn btn-primary">Güncelle</a></td> 
+
                     <td class="align-middle"><a (click)="deleteBox(item);" class="btn btn-danger">Sil</a></td>
                 </tr>
             </tbody>

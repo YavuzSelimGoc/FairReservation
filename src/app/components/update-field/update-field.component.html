@@ -4,7 +4,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form [formGroup]="fieldAddForm">
+    <form [formGroup]="updateFieldForm">
         <div class="card-body">
             <div class="form-group">
                 <label >Alanı Eklemek İstediğiniz Fuar Seçiniz</label>
@@ -28,19 +28,19 @@
               </div>
 
               <div class="form-group">
-                <label >Alanın Yazısı</label>
+                <label >Alanın Yazısı </label>
                 <input  class="form-control" formControlName="fieldLable" >
               </div>
 
               <div class="form-group">
                 <label>Form Sırası</label>
-                <input type="number"  class="form-control" formControlName="Order" >
+                <input type="number"  class="form-control" formControlName="order" >
               </div>
            
             </div>
 
         <div class="card-footer">
-            <button type="submit" (click)="add()" class="btn btn-primary">Kaydet</button>
+            <button type="submit" (click)="updateBox()" class="btn btn-primary">Kaydet</button>
         </div>
     </form>
 </div>

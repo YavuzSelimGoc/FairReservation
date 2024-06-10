@@ -4,6 +4,7 @@ import { Field } from './../../models/field';
 import { FieldService } from './../../services/field.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 import { DefaultFairService } from '../../services/default-fair.service';
 import { Router } from '@angular/router';
 
@@ -44,6 +45,26 @@ fairName:string
   active(field:Field){
     this.fieldService.active(field).subscribe(response=>{
     });
+  }
+  deleteBox(field:Field)
+  {
+    Swal.fire({
+      title:"Emin Misiniz",
+      text:"Silmek İstediğinize Emin Misiniz  ?",
+      icon:"warning",
+      showCancelButton:true,
+      confirmButtonText:'Evet, Silinsin',
+      cancelButtonText:'Hayır, Silinmesin'
+    }).then((result=>{
+      if(result.value){
+        Swal.fire("Sil","Silme işlemi başarılı","success")
+        this.delete(field);
+ 
+      }
+      else if (result.dismiss===Swal.DismissReason.cancel){
+        Swal.fire("Sil!","Silme İşleminden Vazgeçildi","error")
+      }
+    }))
   }
   delete(field:Field){
     this.fieldService.delete(field).subscribe(response=>{

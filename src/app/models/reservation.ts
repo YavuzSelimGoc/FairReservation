@@ -1,5 +1,6 @@
 export interface Reservation {
      reservationId: number;
+     fairId:number
     name: string;
     phoneNumber: string;
     mail: string;

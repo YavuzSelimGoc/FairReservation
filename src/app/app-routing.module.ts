@@ -18,13 +18,14 @@ import { ListFieldComponent } from './components/list-field/list-field.component
 import { AddFieldComponent } from './components/add-field/add-field.component';
 import { AddOptionComponent } from './components/add-option/add-option.component';
 import { ListOptionComponent } from './components/list-option/list-option.component';
+import { UpdateFieldComponent } from './components/update-field/update-field.component';
 
 const routes: Routes = [
   {
     path: '', component: PublicLayoutComponent, children: [
-      { path: '', component: ReservationComponent },
+      { path: '', component: ReservationDynamicComponent },
       { path: 'success', component: SuccesComponent },
-      { path: 'rez', component: ReservationDynamicComponent },
+      { path: 'rez', component: ReservationComponent },
     ]
   },
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'add-field', component: AddFieldComponent ,canActivate:[LoginGuard]},
       { path: 'update-pdfSettings/:fairId', component: PdfSettingsComponent ,canActivate:[LoginGuard]},
       { path: 'update-fair/:fairId', component: UpdateFairComponent,canActivate:[LoginGuard] },
+      { path: 'update-field/:fieldId', component: UpdateFieldComponent,canActivate:[LoginGuard] },
       { path: 'add-option/:fieldId', component: AddOptionComponent,canActivate:[LoginGuard] },
       { path: 'add-pdf-settings', component: AddPdfSettingComponent,canActivate:[LoginGuard] },
       { path: 'list-fair', component: ListFairComponent,canActivate:[LoginGuard] },

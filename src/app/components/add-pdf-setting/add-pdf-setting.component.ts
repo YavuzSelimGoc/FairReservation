@@ -35,7 +35,7 @@ export class AddPdfSettingComponent implements OnInit{
     if(this.pdfSettingAddForm.valid){
       let fairModel =Object.assign({},this.pdfSettingAddForm.value) 
       this.pdfSettingService.add(fairModel).subscribe(response=>{
-        this.router.navigate(["/admin"])
+        this.router.navigate(["/admin/list-fair"])
         this.toastrService.success("Pdf Ayarları Başarı ile Eklendi","Tebrikler")
       });
     }
